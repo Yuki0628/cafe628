@@ -1,0 +1,278 @@
+/////////↓クラス一覧↓/////////
+.font-sm {
+  font-size: 13px;
+}
+.font-md {
+  font-size: 17px;
+}
+.font-lr {
+  font-size: 28px;
+}
+//フォントサイズのクラス
+
+.mb-sm {
+  margin-bottom: 30px !important;
+}
+.mb-lg {
+  margin-bottom: 80px !important;
+}
+
+.margin-mainTitle {
+  margin: 70px 0;
+}
+
+.pb-sm {
+  padding-bottom: 16px !important;
+}
+.pb-lg {
+  padding-bottom: 80px !important;
+}
+.content-width {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1070px;
+}
+//余白のクラス
+
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
+$cCoffee: rgb(156, 86, 54);
+
+.main-title {
+  margin: 120px 0;
+  text-align: center;
+  @extend .font-lr;
+}
+
+body {
+  color: #444444;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.anchor {
+  display: block;
+  padding-top: 1px;
+  margin-top: -1px;
+}
+
+/////////↑クラス一覧↑/////////
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+
+  &.triggered {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 10px 0 25px -10px rgba(0, 0, 0, 0.5);
+  }
+
+  &__nav {
+    display: none;
+  }
+
+  &__ul {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__li {
+    margin-left: 20px;
+
+    & > a {
+      color: black;
+      text-decoration: none !important;
+      text-transform: uppercase;
+    }
+  }
+
+  & .logo {
+    font-size: 38px;
+    display: flex;
+    align-items: center;
+
+    &__img {
+      width: 6rem;
+    }
+
+    &__text {
+      font-size: 20px;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @extend .content-width;
+
+    & a {
+      text-decoration: none;
+      color: #444444;
+    }
+  }
+}
+
+#content {
+  padding-top: 100px;
+}
+
+.concept {
+  @extend .content-width;
+
+  &__text {
+    text-align: center;
+
+    p {
+      line-height: 2em;
+    }
+  }
+
+  &__container,
+  &__container2 {
+    @extend .flex;
+  }
+}
+
+.menu {
+  @extend .content-width;
+
+  & > .iconContainer {
+    text-align: center;
+    & > .icon {
+      color: $cCoffee;
+
+      &.inview {
+        transform: rotate(-45deg);
+        transition: transform 0.6s;
+        transition-delay: 0.1s;
+      }
+    }
+  }
+
+  & > .menu-list {
+    @extend .content-width;
+    margin-top: 80px;
+    width: 100%;
+    position: relative;
+
+    & > table {
+      border-collapse: separate;
+      border-spacing: 20px 30px;
+      width: 90%;
+      background-color: rgba(156, 86, 54, 0.733);
+      color: whitesmoke;
+      position: relative;
+      margin: 0 auto;
+
+      & > thead {
+        @extend .font-lr;
+        text-align: center;
+        font-weight: bold;
+        & > tr > th {
+          width: 100%;
+        }
+      }
+    }
+
+    & > .menu-cover {
+      background-color: rgba(2, 2, 2, 0.8);
+      background-color: whitesmoke;
+      height: 100%;
+      width: 100%;
+      bottom: 0;
+      position: absolute;
+      z-index: 100;
+
+      &.inview {
+        @include animation(
+          $name: menuCover-animation,
+          $duration: 1s,
+          $delay: 0.5s
+        );
+      }
+    }
+  }
+}
+
+.information {
+  &__container {
+    background-color: #f7f6f2;
+    width: 100%;
+
+    &__inner {
+      @extend .content-width;
+      @extend .flex;
+      align-items: center;
+
+      & > .basicInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        & > img {
+          width: 20rem;
+        }
+        .tel {
+          text-align: center;
+          & > a {
+            text-decoration: none;
+            color: black;
+          }
+        }
+      }
+
+      & > .detailInfo {
+        width: 100%;
+        height: 100%;
+        & > .list {
+          & > .items {
+            display: flex;
+            @extend .pb-sm;
+            justify-content: space-between;
+
+            dd {
+              text-align: end;
+              span {
+                font-size: small;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  background-color: #444444;
+  height: 100px;
+  color: whitesmoke;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes menuCover-animation {
+  0% {
+    height: 100%;
+  }
+  100% {
+    height: 0%;
+  }
+}
